@@ -7,7 +7,7 @@ for whatever is written in gui.cpp.
 For making sure gtk works on desktop. First download and extract gtk4 from this --> https://github.com/wingtk/gvsbuild/releases/download/2024.11.1/GTK4_Gvsbuild_2024.11.1_x64.zip
 
 Make a folder C:\gtk\
-Put all the stuff from the unzip in here. For example, \bin should look like C:\gtk\bin.
+Put all the stuff from the unzip in here. For example, bin\ should look like C:\gtk\bin.
 
 Next these three evniormental variables must be set
 
