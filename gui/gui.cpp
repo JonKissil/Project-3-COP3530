@@ -104,7 +104,7 @@ void GUI::createGroupedList(size_t group_size) {
 }
 
 void GUI::nextButton(){
-    if(pageNumber < (*groupedList).size()){
+    if(pageNumber < (*groupedList).size()-1){
         pageNumber++;
         refreshList();
     }else{
