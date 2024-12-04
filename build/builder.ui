@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <object id="window" class="GtkWindow">
+        <property name="default-height">800</property>
+        <property name="default-width">600</property>
+        <property name="title">Similyrically</property>
+
+        <child>
+            <object id="main_overlay" class="GtkBox">
+                <property name="halign">center</property>
+
+
+
+<!--                View 1: Has input box and search button-->
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+                <child>
+                    <object id="view1" class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">20</property>
+<!--                        <property name="halign">end</property>-->
+                        <property name="valign">center</property>
+
+                        <child>
+                            <object id="v1_title" class="GtkLabel">
+                                <property name="label">Welcome to Similyrically</property>
+                                <property name="halign">center</property>
+                                <property name="valign">start</property>
+                                <property name="margin-top">20</property>
+                                <property name="margin-bottom">20</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object id="v1_separator" class="GtkSeparator">
+                                <property name="margin-bottom">10</property>
+                                <property name="orientation">horizontal</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object id="grid" class="GtkGrid">
+                                <!--                                Search Button -->
+                                <child>
+                                    <object id="v1_button1" class="GtkButton">
+                                        <property name="label">Search</property>
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">1</property>
+                                            <property name="column-span">2</property>
+                                        </layout>
+                                    </object>
+                                </child>
+
+                                <!--                                Search Box-->
+                                <child>
+                                    <object id="v1_artistEntry" class="GtkEntry">
+                                        <property name="placeholder-text">Artist Name</property>
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object id="v1_songEntry" class="GtkEntry">
+                                        <property name="placeholder-text">Song Title</property>
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+
+                            </object>
+                        </child>
+                    </object>
+                </child>
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+<!--                Second view: Shows recommended songs-->
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+                <child>
+                    <object id="view2" class="GtkBox">
+                        <property name="orientation">vertical</property>
+
+
+<!--                        Label-->
+                        <child><object id="v2_title" class="GtkLabel">
+                            <property name="label">Results!</property>
+                            <property name="halign">center</property>
+                            <property name="valign">start</property>
+                            <property name="margin-top">200</property>
+                            <property name="margin-bottom">20</property>
+                        </object></child>
+
+<!--                        separator for looking nice-->
+                        <child>
+                            <object id="v2_separator" class="GtkSeparator">
+                                <property name="margin-bottom">10</property>
+                                <property name="orientation">horizontal</property>
+                            </object>
+                        </child>
+
+
+<!--                        ListBox can dynamically have more or less rows-->
+                        <child>
+                            <object id="v2_list" class="GtkListBox">
+                            </object>
+                        </child>
+
+
+<!--                        Grid for back/next/restart buttons-->
+                        <child>
+                            <object id="blew" class="GtkGrid">
+                                <property name="valign">center</property>
+                                <property name="halign">center</property>
+
+                                <child>
+                                    <object id="v2_backButton" class="GtkButton">
+                                        <property name="label">Back</property>
+                                        <property name="margin-top">20</property>
+
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object id="v2_nextButton" class="GtkButton">
+                                        <property name="label">Next</property>
+                                        <property name="margin-top">20</property>
+
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object id="v2_restartButton" class="GtkButton">
+                                        <property name="label">Restart</property>
+                                        <property name="margin-top">20</property>
+
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">1</property>
+                                            <property name="column-span">2</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+
+
+                    </object>
+                </child>
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+            </object>
+        </child>
+
+    </object>
+</interface>
