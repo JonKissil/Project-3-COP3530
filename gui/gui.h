@@ -25,7 +25,8 @@ class GUI{
     static std::function<void()> externalFunction;
 
     // where to write inputted string
-    static std::string *inputString;
+    static std::string *artistPtr;
+    static std::string *songPtr;
 
     // what will be displayed on the output list
     static std::vector<std::string> *outputDisplayList;
@@ -34,7 +35,9 @@ class GUI{
 
     // GUI objects
     //=========
-    static GObject *textEntry;
+    static GObject *artistEntry;
+    static GObject *songEntry;
+
 
     static GtkWidget *view1;
     static GtkWidget *view2;
@@ -63,9 +66,9 @@ public:
     void setSearchButtonFunction(std::function<void()> func);
     static void searchButtonFunctionCaller();
 
-    // set where to write input string
+    // set where to write artistPtr string
     // and set where to read out from
-    void setInputPtr(std::string *input);
+    void setInputPtrs(std::string *artistPtr, std::string *songPtr);
     void setOutputListPtr(std::vector<std::string> *output);
 
     // used for starting and closing gui

@@ -11,11 +11,13 @@
 // static members of the gui class have to be inited with null
 //===================================================
 GUI* GUI::instance = nullptr;
-std::string* GUI::inputString = nullptr;
+std::string* GUI::artistPtr = nullptr;
+std::string* GUI::songPtr = nullptr;
 std::vector<std::string>* GUI::outputDisplayList = nullptr;
 std::vector<std::vector<std::string>>* GUI::groupedList = nullptr;
 std::function<void()> GUI::externalFunction = nullptr;
-GObject* GUI::textEntry = nullptr;
+GObject* GUI::artistEntry = nullptr;
+GObject* GUI::songEntry = nullptr;
 GtkWidget* GUI::view1 = nullptr;
 GtkWidget* GUI::view2 = nullptr;
 GtkWidget *GUI::listView = nullptr;
@@ -51,12 +53,13 @@ void GUI::setSearchButtonFunction(std::function<void()> func) {
 
 /**
  * Where to put user inputted string into
- * just give a pointer to the string that the input
+ * just give a pointer to the string that the artistPtr
  * should be written to
- * @param input
+ * @param artistPtr
  */
-void GUI::setInputPtr(std::string *input) {
-    inputString = input;
+void GUI::setInputPtrs(std::string *artistPtr, std::string *songPtr) {
+    this->artistPtr = artistPtr;
+    this->songPtr = songPtr;
 }
 
 /**
@@ -148,19 +151,24 @@ void GUI::refreshList() {
 
 void GUI::searchButtonFunctionCaller() {
 
-    // get entry buffer and grab text from buffer
-    GtkEntryBuffer *buffer = gtk_entry_get_buffer(GTK_ENTRY(textEntry));
-    const gchar *text = gtk_entry_buffer_get_text(buffer);
-
+    // get entry aBuffer and grab aText from aBuffer
+    GtkEntryBuffer *aBuffer = gtk_entry_get_buffer(GTK_ENTRY(artistEntry));
+    const gchar *aText = gtk_entry_buffer_get_text(aBuffer);
     // convert c style string to a normal string
     // check if string is empy
-    std::string text_string = std::string(text);
-    if(text_string.empty()){
+    std::string artistString = std::string(aText);
+
+    GtkEntryBuffer *sBuffer = gtk_entry_get_buffer(GTK_ENTRY(songEntry));
+    const gchar *sText = gtk_entry_buffer_get_text(sBuffer);
+    std::string songString = std::string(sText);
+
+    if(artistString.empty() || songString.empty()){
         return;
     }
 
-    // set pointed inputString data
-    *inputString = text_string;
+    // set pointed artistPtr data
+    *artistPtr = artistString;
+    *songPtr = songString;
 
     // call external function
     externalFunction();
@@ -192,7 +200,7 @@ void GUI::activate(GtkApplication *app, gpointer user_data) {
 
     // Set up builder from ui file
     GtkBuilder *builder = gtk_builder_new ();
-    gtk_builder_add_from_file (builder, "../builder.ui", NULL);
+    gtk_builder_add_from_file (builder, "./builder.ui", NULL);
     
     // set up objects to save from builder to use later
     //+++++++++++++++++
@@ -216,8 +224,10 @@ void GUI::activate(GtkApplication *app, gpointer user_data) {
     g_signal_connect (button, "clicked", G_CALLBACK(searchButtonFunctionCaller), NULL);
 
     // when 'Enter' is hit in the text entry do the same as button ^
-    textEntry = gtk_builder_get_object(builder, "v1_entry");
-    g_signal_connect (textEntry, "activate", G_CALLBACK(searchButtonFunctionCaller), NULL);
+    artistEntry = gtk_builder_get_object(builder, "v1_artistEntry");
+    g_signal_connect (artistEntry, "activate", G_CALLBACK(searchButtonFunctionCaller), NULL);
+    songEntry = gtk_builder_get_object(builder, "v1_songEntry");
+    g_signal_connect (songEntry, "activate", G_CALLBACK(searchButtonFunctionCaller), NULL);
     //****************
 
     // View 2
