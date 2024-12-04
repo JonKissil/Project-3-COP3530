@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     # chop down list to relevant songs (5000 random songs within the same genre + our choice)
     df = df[df['language'].isin([lang])]
-    df = df[df['tag'].isin([tag])].sample(n = 5000)
+    df = df[df['tag'].isin([tag])].sample(n = 5000, replace = True)
     df = pd.concat([df, songinfo], ignore_index = True)
 
     # clear out punctuation and bag words
