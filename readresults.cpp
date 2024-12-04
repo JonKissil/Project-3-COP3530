@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a58147a6a5653f73e8978ea0d61e7acd2bfef21a956c88d072dcfa7cf7b70b50
-size 506
+#include "readresults.h"
+
+std::vector<std::string> readResults() {
+    std::ifstream f("results.txt");
+    std::string line;
+    std::vector<std::string> outputVector;
+
+    while(std::getline(f, line)) {
+        outputVector.push_back(line);
+    }
+
+    f.close();
+
+    return outputVector;
+}
+
+
+void runscript(std::string artist, std::string song) {
+    artist = '"'+artist+'"';
+    song = '"'+song+'"';
+    std::string command = "launchscript.sh " + artist + ' ' + song;
+    std::system(command.c_str());
+}
