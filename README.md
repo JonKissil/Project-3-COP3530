@@ -24,4 +24,5 @@ Using Similyrically is very simple. Simply input the artist name and song title 
 The artist name and song title are case sensitive, so if you are unsure about proper spelling and capitalization we recommend visiting the song's [Genius page](https://genius.com/) for a reference.
 *Warning!* Similyrically is searching a very large database! As such it will take some time to process your request. So be patient!
 # Similyrically Photos
-
+![Search Menu](./media/search-picture.png)
+![Results Menu](./media/results-picture.png)
