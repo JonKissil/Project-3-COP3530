@@ -19,6 +19,9 @@ $env:INCLUDE = "C:\gtk\include;C:\gtk\include\cairo;C:\gtk\include\glib-2.0;C:\g
 This is only temporary and will need to be re-ran after restarting the computer. A permanent solution is changing the windows environment variables.
 ## Building Similyrically
 To build Similyrically, download and extract the repository. MinGW and cmake are necessary to build the program. Then go into the build/ folder and run the build.bat file. This will build the program. Click on Similyrically.exe to run the program.
+
+**VERY IMPORTANT: IF YOU HAVE NOT PERMANENTLY SET YOUR ENVIRONMENT VARIABLES AND ARE USING THE SETUP DETAILED ABOVE, YOU _MUST_ CALL SYMILYRICALLY.EXE FROM THE ADMIN POWERSHELL YOU RAN THOSE LINES IN!** 
+
 Due to file size limitations, the database must be externally downloaded from this [link](https://drive.google.com/file/d/1qno3_FT3GS-21PjkKXUsVefH9TKOCNqf/view?usp=sharing). This should be copied to the build/ directory. 
 # Using Similyrically
 Using Similyrically is very simple. Simply input the artist name and song title into the program and hit search!
