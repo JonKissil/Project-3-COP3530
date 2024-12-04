@@ -51,7 +51,6 @@ if __name__ == "__main__":
     prenormalized = np.sqrt((net*net).sum(axis = 1))
     normalized = net.divide(prenormalized, axis = 0)
     normalized = normalized.fillna(0)
-
     cosine = normalized.dot(normalized.transpose())
 
     # get our results
