@@ -26,6 +26,8 @@ add_executable(Similyrically main.cpp
         ./readresults.cpp
         ./readresults.h
         main.cpp
+        searches.h
+        searches.cpp
 )
 
 target_link_libraries(Similyrically ${GTK_LIBRARIES})
