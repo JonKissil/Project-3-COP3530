@@ -20,7 +20,7 @@ This is only temporary and will need to be re-ran after restarting the computer.
 ## Building Similyrically
 To build Similyrically, download and extract the repository. MinGW and cmake are necessary to build the program. Then go into the build/ folder and run the build.bat file. This will build the program. Click on Similyrically.exe to run the program.
 
-**VERY IMPORTANT: IF YOU HAVE NOT PERMANENTLY SET YOUR ENVIRONMENT VARIABLES AND ARE USING THE SETUP DETAILED ABOVE, YOU _MUST_ CALL SYMILYRICALLY.EXE FROM THE ADMIN POWERSHELL YOU RAN THOSE LINES IN! IT WILL ERROR OTHERWISE!** 
+**VERY IMPORTANT:** IF YOU HAVE NOT PERMANENTLY SET YOUR ENVIRONMENT VARIABLES AND ARE USING THE SETUP DETAILED ABOVE, YOU **MUST** CALL SYMILYRICALLY.EXE FROM THE ADMIN POWERSHELL YOU RAN THOSE LINES IN! IT WILL ERROR OTHERWISE!
 
 Due to file size limitations, the database must be externally downloaded from this [link](https://drive.google.com/file/d/1qno3_FT3GS-21PjkKXUsVefH9TKOCNqf/view?usp=sharing). This should be copied to the build/ directory. 
 # Using Similyrically
