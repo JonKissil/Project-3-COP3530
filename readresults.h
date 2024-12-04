@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0ef782b94b67715c97b1a4df579a26523a4a965008b011a2e49b1cd1a59d5cc5
-size 295
+//
+// Created by Jbkis on 12/3/2024.
+//
+#include <iostream>
+#include <fstream>
+#include <vector>
+#ifndef LISTREADER_READRESULTS_H
+#define LISTREADER_READRESULTS_H
+
+
+std::vector<std::string> readResults();
+void runscript(std::string artist, std::string song);
+
+
+#endif //LISTREADER_READRESULTS_H
