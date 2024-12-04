@@ -17,9 +17,10 @@ if __name__ == "__main__":
     songinfo = songinfo.loc[songinfo['artist'] == artist]
 
     # get song metadata
-    lang = songinfo.at[1, 'language']
-    tag = songinfo.at[1, 'tag']
-    id = songinfo.at[1, 'id']
+    songinfo = songinfo.reset_index()
+    lang = songinfo.at[0, 'language']
+    tag = songinfo.at[0, 'tag']
+    id = songinfo.at[0, 'id']
 
     # chop down list to relevant songs (5000 random songs within the same genre + our choice)
     df = df[df['language'].isin([lang])]
