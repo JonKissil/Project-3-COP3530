@@ -1,31 +1,3 @@
-
-These are the necessary files for using the gui
-
-Make sure that within gui.cpp that the file path for builder.ui is changed within the activate() function. 
-This file path is always relative to the exe, so for whatever config just make sure that the builder.ui file is in the appropriate file path 
-for whatever is written in gui.cpp.
-
-For making sure gtk works on desktop. First download and extract gtk4 from this --> https://github.com/wingtk/gvsbuild/releases/download/2024.11.1/GTK4_Gvsbuild_2024.11.1_x64.zip
-
-Make a folder C:\gtk\
-Put all the stuff from the unzip in here. For example, bin\ should look like C:\gtk\bin.
-
-Next these three evniormental variables must be set
-
-$env:Path = "C:\gtk\bin;" + $env:Path
-$env:LIB = "C:\gtk\lib;" + $env:LIB
-$env:INCLUDE = "C:\gtk\include;C:\gtk\include\cairo;C:\gtk\include\glib-2.0;C:\gtk\include\gobject-introspection-1.0;C:\gtk\lib\glib-2.0\include;" + $env:INCLUDE
-
-These can be set by either just running this ^ in a powershell window in admin. This will only be a temporary setting and will reset when your computer restarts. 
-A permanent fix is changing the enviorment variables. 
-Search in windows "edit the system environment variables"
-Open that window, make sure you are in advanced tab at the top and click "Enviorment variables..." at the bottom
-
-If you have multiple users on ur pc just edit the system variables but it rlly doesnt matter. 
-
-Select the "Path" Variabole and click edit; Click new and add your gtk bin directory as such: C:\gtk\bin
-Click out of the path variable and stay in the systems variable.
-Add a new variable and name it "LIB" and for its value add "C:\gtk\lib"
-Next add another variable and name it "INCLUDE". Then add this as the value. "C:\gtk\include;C:\gtk\include\cairo;C:\gtk\include\glib-2.0;C:\gtk\include\gobject-introspection-1.0;C:\gtk\lib\glib-2.0\include;"
-
-That should all be set for running the gui. Just make sure the cmake file is set up correctly to use all this.
+version https://git-lfs.github.com/spec/v1
+oid sha256:03a7eff787843adfab879e54bc34568d390d59c416add07b20ff48e7d3afdd72
+size 1968
