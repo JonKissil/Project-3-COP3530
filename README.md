@@ -22,7 +22,7 @@ To build Similyrically, download and extract the repository. MinGW and cmake are
 
 **VERY IMPORTANT:** IF YOU HAVE NOT PERMANENTLY SET YOUR ENVIRONMENT VARIABLES AND ARE USING THE SETUP DETAILED ABOVE, YOU **MUST** CALL SYMILYRICALLY.EXE FROM THE ADMIN POWERSHELL YOU RAN THOSE LINES IN! IT WILL ERROR OTHERWISE!
 
-Due to file size limitations, the database must be externally downloaded from this [link](https://drive.google.com/file/d/1qno3_FT3GS-21PjkKXUsVefH9TKOCNqf/view?usp=sharing). This should be copied to the build/ directory. 
+Due to file size limitations, the database must be externally downloaded from this [link](https://drive.google.com/file/d/1qno3_FT3GS-21PjkKXUsVefH9TKOCNqf/view?usp=sharing). This should be copied to the build/ directory (overwrite the empty csv already present in the directory). 
 # Using Similyrically
 Using Similyrically is very simple. Simply input the artist name and song title into the program and hit search!
 The artist name and song title are case sensitive, so if you are unsure about proper spelling and capitalization we recommend visiting the song's [Genius page](https://genius.com/) for a reference.
