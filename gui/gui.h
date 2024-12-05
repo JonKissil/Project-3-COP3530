@@ -30,6 +30,9 @@ class GUI{
 
     // what will be displayed on the output list
     static std::vector<std::string> *outputDisplayList;
+    static std::vector<std::vector<std::string>> *bfsGroupedList;
+    static std::vector<std::vector<std::string>> *dfsGroupedList;
+
 
     static std::vector<std::vector<std::string>> *groupedList;
 
@@ -43,16 +46,21 @@ class GUI{
     static GtkWidget *view2;
 
     static GtkWidget *listView;
+
+    static GtkWidget *orderingButton;
     //=========
 
 
     //helpers
-    static void createGroupedList(size_t group_size);
+    static void createGroupedList(size_t group_size, std::vector<std::vector<std::string>> *vec,
+                                  std::vector<std::string> dataList);
     static int pageNumber;
 
     static void backButton();
     static void nextButton();
     static void refreshList();
+    static void changeOrdering();
+    static bool order;
 
     // number of items to display on the list
     static const int numItems = 10;

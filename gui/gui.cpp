@@ -5,7 +5,7 @@
 #include "gui.h"
 #include <gtk/gtk.h>
 #include <iostream>
-
+#include "../searches.h"
 
 // it doesnt compile without having this here ¯\_(ツ)_/¯
 // static members of the gui class have to be inited with null
@@ -22,6 +22,11 @@ GtkWidget* GUI::view1 = nullptr;
 GtkWidget* GUI::view2 = nullptr;
 GtkWidget *GUI::listView = nullptr;
 int GUI::pageNumber = 0;
+GtkWidget *GUI::orderingButton = nullptr;
+bool GUI::order = false;
+std::vector<std::vector<std::string>> *GUI::bfsGroupedList = nullptr;
+std::vector<std::vector<std::string>> *GUI::dfsGroupedList = nullptr;
+
 //===================================================
 
 
@@ -91,18 +96,19 @@ void GUI::safeClose() {
 
 
 // helper
-void GUI::createGroupedList(size_t group_size) {
-    if(groupedList== nullptr){
-        groupedList = new std::vector<std::vector<std::string>>;
-    }
-    (*groupedList).clear();
+void GUI::createGroupedList(size_t group_size, std::vector<std::vector<std::string>> *vec, std::vector<std::string> dataList) {
 
-    for (size_t i = 0; i < (*outputDisplayList).size(); i += group_size) {
+    if(vec== nullptr){
+        vec = new std::vector<std::vector<std::string>>;
+    }
+    (*vec).clear();
+
+    for (size_t i = 0; i < (dataList).size(); i += group_size) {
         std::vector<std::string> group;
-        for (size_t j = i; j < i + group_size && j < (*outputDisplayList).size(); ++j) {
-            group.push_back((*outputDisplayList)[j]);
+        for (size_t j = i; j < i + group_size && j < (dataList).size(); ++j) {
+            group.push_back((dataList)[j]);
         }
-        (*groupedList).push_back(group);
+        (*vec).push_back(group);
     }
 }
 
@@ -124,8 +130,33 @@ void GUI::backButton() {
     }
 }
 
+void GUI::changeOrdering() {
+    if(order){
+        //dfs --> bfs
+        order = false;
+        refreshList();
+        gtk_button_set_label(GTK_BUTTON(orderingButton), "BFS");
+    }else{
+        //bfs --> dfs
+        order = true;
+        refreshList();
+        gtk_button_set_label(GTK_BUTTON(orderingButton), "DFS");
+
+    }
+}
+
 
 void GUI::refreshList() {
+    if(order){
+        (groupedList) = dfsGroupedList;
+//        (*outputDisplayList) = dfsTraverse(helpMakeBST((*outputDisplayList)));
+
+    }else{
+        (groupedList) = bfsGroupedList;
+//        (*outputDisplayList) = bfsTraverse(helpMakeBST((*outputDisplayList)));
+    }
+
+
     for (int i = 0; i < numItems; i++) {
         GtkListBoxRow *row = gtk_list_box_get_row_at_index(GTK_LIST_BOX(listView), i);
         if(i < (*groupedList)[pageNumber].size()){
@@ -173,8 +204,12 @@ void GUI::searchButtonFunctionCaller() {
     // call external function
     externalFunction();
 
-    // create grouped list
-    createGroupedList(numItems);
+    bfsGroupedList = new std::vector<std::vector<std::string>>;
+    dfsGroupedList = new std::vector<std::vector<std::string>>;
+
+    createGroupedList(numItems, bfsGroupedList, bfsTraverse(helpMakeBST(*outputDisplayList)));
+    createGroupedList(numItems, dfsGroupedList, dfsTraverse(helpMakeBST(*outputDisplayList)));
+    groupedList = bfsGroupedList;
 
     gtk_list_box_set_show_separators(GTK_LIST_BOX(listView), true);
 
@@ -201,7 +236,7 @@ void GUI::activate(GtkApplication *app, gpointer user_data) {
     // Set up builder from ui file
     GtkBuilder *builder = gtk_builder_new ();
     gtk_builder_add_from_file (builder, "./builder.ui", NULL);
-    
+
     // set up objects to save from builder to use later
     //+++++++++++++++++
     view1 = GTK_WIDGET(gtk_builder_get_object(builder, "view1"));
@@ -240,6 +275,9 @@ void GUI::activate(GtkApplication *app, gpointer user_data) {
 
     button = gtk_builder_get_object (builder, "v2_nextButton");
     g_signal_connect (button, "clicked", G_CALLBACK(nextButton), NULL);
+
+    orderingButton = GTK_WIDGET(gtk_builder_get_object(builder, "v2_orderingButton"));
+    g_signal_connect(orderingButton, "clicked", G_CALLBACK(changeOrdering), NULL);
     //****************
 
     gtk_widget_set_visible (GTK_WIDGET (window), TRUE);

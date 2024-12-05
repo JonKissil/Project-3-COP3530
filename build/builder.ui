@@ -139,14 +139,28 @@
                                     </object>
                                 </child>
 
+
                                 <child>
-                                    <object id="v2_restartButton" class="GtkButton">
-                                        <property name="label">Restart</property>
-                                        <property name="margin-top">20</property>
+                                    <object id="v2_orderingButton" class="GtkButton">
+                                        <property name="label">BFS</property>
+                                        <property name="margin-top">10</property>
 
                                         <layout>
                                             <property name="column">0</property>
                                             <property name="row">1</property>
+                                            <property name="column-span">2</property>
+                                        </layout>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object id="v2_restartButton" class="GtkButton">
+                                        <property name="label">Restart</property>
+                                        <property name="margin-top">10</property>
+
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">2</property>
                                             <property name="column-span">2</property>
                                         </layout>
                                     </object>
